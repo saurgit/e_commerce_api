@@ -52,7 +52,7 @@ router.get('/find/:id', verifyTokenAndAdmin, async (req,res)=>{
 router.get('/', verifyTokenAndAdmin, async (req,res)=>{
     const query=req.query.new
     try{
-        const users = query ? await User.find().limit(5) : await User.find();
+        const users = query ? await User.find().sort({$natural: -1 }).limit(5) : await User.find();
         // SEND RESPONSE
         res.status(200).json(users)
     }catch(err){
