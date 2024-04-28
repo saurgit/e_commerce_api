@@ -31,8 +31,8 @@ router.post("/payment", async (req, res) => {
           message: 'We\'ll email you instructions on how to get started.',
         },
       },
-      success_url: `http://localhost:5173/success/?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: "http://localhost:5173/cancel",
+      success_url: `https://e-cloth-shop-1.netlify.app/success/?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: "https://e-cloth-shop-1.netlify.app/cancel",
       consent_collection: {
         terms_of_service: 'required',
       },
