@@ -58,7 +58,9 @@ router.get('/find/:userId',verifyTokenAndAuthorization ,async (req,res)=>{
 
 router.get("/",verifyTokenAndAdmin,async (req,res)=>{
     try{
-        const  orders=await Order.find().populate("userId")
+        const query=req.query.new
+        
+        const  orders= query ? await Order.find().populate("userId").sort({$natural:-1}) :await Order.find().populate("userId")
         res.status(200).json(orders)
     }catch(err){
         res.status(500).json(err);
